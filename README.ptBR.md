@@ -27,7 +27,7 @@ O **KCTX** oferece uma alternativa leve: mantém os arquivos kubeconfig separado
 ## Instalação
 
 ```bash
-curl -sfL https://raw.githubusercontent.com/deividfrancis/kctx/main/install.sh | sh -
+curl -sfL https://deividfrancis.github.io/kctx/install.sh | sh -
 ```
 
 ---

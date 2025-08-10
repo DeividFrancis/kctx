@@ -27,7 +27,7 @@ Managing multiple Kubernetes clusters typically requires merging kubeconfig file
 ## Installation
 
 ```bash
-curl -sfL https://raw.githubusercontent.com/deividfrancis/kctx/main/install.sh | sh -
+curl -sfL https://deividfrancis.github.io/kctx/install.sh | sh -
 ```
 
 ---
