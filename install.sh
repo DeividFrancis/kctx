@@ -1,39 +1,34 @@
 #!/bin/bash
 
+set -e
+
 BIN_DIR="$HOME/bin"
-SCRIPT_PATH="$BIN_DIR/kctx"
+SCRIPT_NAME="kctx"
+SCRIPT_PATH="$BIN_DIR/$SCRIPT_NAME"
+KCTX_SCRIPT_URL="https://raw.githubusercontent.com/deividfrancis/kctx/main/kctx.sh"
 
 echo "🚀 Starting kctx installation..."
 
-# Create ~/bin if it doesn't exist
-if [[ ! -d "$BIN_DIR" ]]; then
-    echo "📂 Creating directory: $BIN_DIR"
+# Create ~/bin directory if it doesn't exist
+if [ ! -d "$BIN_DIR" ]; then
+    echo "📂 Creating directory $BIN_DIR"
     mkdir -p "$BIN_DIR"
 fi
 
-# Copy kctx.sh to ~/bin/kctx
-if [[ -f "./kctx.sh" ]]; then
-    echo "📥 Installing kctx script..."
-    cp ./kctx.sh "$SCRIPT_PATH"
-else
-    echo "❌ Error: kctx.sh not found in current directory."
-    exit 1
-fi
+# Download the main kctx script from GitHub
+echo "📥 Downloading $SCRIPT_NAME script..."
+curl -sfL "$KCTX_SCRIPT_URL" -o "$SCRIPT_PATH"
 
-# Make it executable
+# Make the script executable
 chmod +x "$SCRIPT_PATH"
-echo "🔑 Granted execute permissions to kctx."
+echo "🔑 Set executable permission for $SCRIPT_PATH"
 
-# Ensure ~/bin is in PATH
-if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
+# Check if ~/bin is in the PATH environment variable
+if ! echo "$PATH" | grep -q "$BIN_DIR"; then
     echo "🛠 Adding $BIN_DIR to PATH in ~/.bashrc"
     echo "export PATH=\"\$HOME/bin:\$PATH\"" >> "$HOME/.bashrc"
-    echo "⚠️ Run: source ~/.bashrc  to apply changes now."
+    echo "⚠️ Please run 'source ~/.bashrc' or restart your shell to apply changes."
 fi
 
-echo "✅ kctx installed successfully at: $SCRIPT_PATH"
-echo "💡 Usage:"
-echo "   kctx               -> List kubeconfigs (marks active one with ✅)"
-echo "   kctx <name>        -> Switch to a kubeconfig"
-echo "   kctx show          -> Show active kubeconfig"
-echo "   kctx -h | --help   -> Show help"
+echo "✅ kctx installed successfully!"
+echo "You can now run 'kctx' from your terminal."
