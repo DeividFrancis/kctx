@@ -4,6 +4,8 @@ Ferramenta CLI simples para alternar contextos Kubernetes baseada em arquivos ku
 
 Para a versão em inglês, veja [README.md](README.md)
 
+![Demo use](docs/demo.gif)
+
 ---
 
 ## Motivação

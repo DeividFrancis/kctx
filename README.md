@@ -4,6 +4,8 @@ Simple CLI tool to switch Kubernetes contexts based on `.yaml` kubeconfig files.
 
 For Brazilian Portuguese version, see [README.ptBR.md](README.ptBR.md)
 
+![Demo use](docs/demo.gif)
+
 ---
 
 ## Motivation
